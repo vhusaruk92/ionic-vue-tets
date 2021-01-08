@@ -1,0 +1,5 @@
+ion-toolbar {
+    --background: var(--ion-color-primary);
+    /** works for android only **/
+    --color: var(--ion-color-primary-contrast);
+}
