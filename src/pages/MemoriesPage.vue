@@ -1,31 +1,20 @@
 <template>
-<ion-page>
-    <ion-header>
-        <ion-toolbar>
-            <ion-title>All memories</ion-title>
-        </ion-toolbar>
-    </ion-header>
-    <ion-content>
-        <ion-list>
-            <ion-item>Victoria</ion-item>
-            <ion-item>Elithabet</ion-item>
-            <ion-item>Mary</ion-item>
-        </ion-list>
-    </ion-content>
-</ion-page>
+<base-layout page-title="All Memories">
+    <ion-list>
+        <ion-item router-link="/memories/1">Trip to the mountain</ion-item>
+        <ion-item>Surfing the sea</ion-item>
+        <ion-item>Delicious eating</ion-item>
+    </ion-list>
+</base-layout>
 </template>
 
 <script>
-import { IonPage, IonHeader, IonTitle, IonContent, IonToolbar, IonList, IonItem} from '@ionic/vue'
+import {IonList, IonItem} from '@ionic/vue'
+
 export default {
-    comments: {
-        IonPage,
-        IonHeader,
-        IonTitle,
-        IonContent,
-        IonToolbar,
-        IonList,
-        IonItem
+  components: {
+      IonList,
+      IonItem
     }
 }
 </script>
