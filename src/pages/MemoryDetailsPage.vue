@@ -18,10 +18,10 @@ export default {
         return this.$store.getters.memory(this.memoryId);
       }
     },
-    watch: {
-        '$route'(currentRoute) {
-          this.memoryId = currentRoute.params.id;
-        }
-    }
+    // watch: {
+    //     '$route'(currentRoute) {
+    //       this.memoryId = currentRoute.params.id;
+    //     }
+    // }
 }
 </script>
