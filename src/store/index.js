@@ -30,7 +30,13 @@ const store = createStore({
             return state.memories
         },
         memory(state) {
+            // console.log('state')
+            // console.log(state)
             return (memoryId) => {
+                // console.log('memoryId')
+                // console.log(memoryId)
+                // console.log('st mem')
+                // console.log(state.memories.find(memory => memory.id === memoryId))
                 return state.memories.find(memory => memory.id === memoryId)
             }
         }
