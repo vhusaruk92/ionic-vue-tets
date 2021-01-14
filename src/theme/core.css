@@ -3,3 +3,7 @@ ion-toolbar {
     /** works for android only **/
     --color: var(--ion-color-primary-contrast);
 }
+
+ion-icon {
+    color: white;
+}

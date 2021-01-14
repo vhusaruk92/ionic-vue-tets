@@ -6,10 +6,13 @@
                 <ion-back-button :default-href="pageDefaultBackLink"></ion-back-button>
             </ion-buttons>
             <ion-title>{{pageTitle}}</ion-title>
+            <ion-buttons slot="end">
+                <slot name="actions"></slot>
+            </ion-buttons>
         </ion-toolbar>
     </ion-header>
     <ion-content>
-        <slot/>
+        <slot></slot>
     </ion-content>
 </ion-page>
 </template>

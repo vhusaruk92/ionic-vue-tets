@@ -1,15 +1,28 @@
 <template>
     <base-layout page-title="All Memories">
+        <template v-slot:actions>
+            <ion-button>
+                <ion-icon slot="icon-only" :icon="add">
+                </ion-icon>
+            </ion-button>
+        </template>
         <memories-list :memories="memories"></memories-list>
     </base-layout>
 </template>
 
 <script>
+import {IonButton, IonIcon} from '@ionic/vue';
 import MemoriesList from '../components/memories/MemoriesList.vue';
+import {add} from "ionicons/icons";
 
 export default {
     components: {
-        MemoriesList
+        MemoriesList,
+        IonButton,
+        IonIcon
+    },
+    data() {
+        return {add}
     },
     computed: {
         memories() {
