@@ -25,18 +25,30 @@ const store = createStore({
             ]
         };
     },
+    mutations: {
+        addMemory(state, memoryData) {
+          const newMemory = {
+            id: new Date().toISOString(),
+            title: memoryData.title,
+            image: memoryData.imageUrl,
+            description: memoryData.description
+          };
+    
+          console.log('in store', newMemory)
+          state.memories.unshift(newMemory);
+        }
+    },
+    actions: {
+        addMemory(context, memoryData) {
+          context.commit('addMemory', memoryData);
+        }
+    },
     getters: {
         memories(state) {
             return state.memories
         },
         memory(state) {
-            // console.log('state')
-            // console.log(state)
             return (memoryId) => {
-                // console.log('memoryId')
-                // console.log(memoryId)
-                // console.log('st mem')
-                // console.log(state.memories.find(memory => memory.id === memoryId))
                 return state.memories.find(memory => memory.id === memoryId)
             }
         }
