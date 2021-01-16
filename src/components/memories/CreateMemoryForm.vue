@@ -5,9 +5,18 @@
                 <ion-label position="floating">Title</ion-label>
                 <ion-input type="text" required v-model="enteredTitle"/>
             </ion-item>
-            <ion-item>
+            <!-- <ion-item>
                 <ion-label position="floating">Image URL</ion-label>
                 <ion-input type="url" required v-model="enteredImageUrl"/>
+            </ion-item> -->
+            <ion-item>
+                <ion-thumbnail slot="start">
+                    <img :src="previewImageUrl"/>
+                </ion-thumbnail>
+                <ion-button type="button" @click="takePhoto">
+                    <ion-icon :icon="camera"></ion-icon>
+                    Take photo
+                </ion-button>
             </ion-item>
             <ion-item>
                 <ion-label position="floating">Description</ion-label>
@@ -19,7 +28,12 @@
 </template>
 
 <script>
-import { IonList, IonItem, IonLabel, IonInput, IonTextarea, IonButton} from '@ionic/vue';
+import { IonList, IonItem, IonLabel, IonInput, IonTextarea, IonButton, IonThumbnail, IonIcon} from '@ionic/vue';
+
+import {camera} from "ionicons/icons";
+import {Plugins, CameraResultType, CameraSource} from "@capacitor/core";
+
+const {Camera} = Plugins
 
 export default {
     emits:['save-memory'],
@@ -29,13 +43,17 @@ export default {
         IonLabel,
         IonInput,
         IonTextarea,
-        IonButton
+        IonButton,
+        IonThumbnail,
+        IonIcon
     },
     data() {
         return {
             enteredTitle: '',
             enteredImageUrl: '',
-            enteredDecsription: ''
+            enteredDecsription: '',
+            previewImageUrl: '',
+            camera
         }
     },
     methods: {
@@ -46,6 +64,15 @@ export default {
                 description: this.enteredDecsription
             };
             this.$emit('save-memory', memoryData)
+        },
+        async takePhoto() {
+            const photo = await Camera.getPhoto({
+                resultType: CameraResultType.Url,
+                source: CameraSource.Camera,
+                quality: 69
+            });
+
+            this.previewImageUrl = photo.webPath;
         }
     }
 }
